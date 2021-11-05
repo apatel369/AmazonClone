@@ -1,13 +1,13 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import ProductItem from '../../components/ProductItem';
 import products from '../../data/products';
 
 const HomeScreen = () => {
   return (
     <View>
-      <ProductItem item={products[1]}/>
+      <FlatList data={products} renderItem={({item}) => <ProductItem item={item}/>} showsVerticalScrollIndicator={false}/>
     </View>
   );
 };

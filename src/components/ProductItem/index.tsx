@@ -32,6 +32,7 @@ const ProductItem = (props: ProductItemProps) => {
         <View style={styles.ratingsContainer}>
           {[0, 0, 0, 0, 0].map((el, idx) => (
             <FontAwesome
+              key={`${item.id}-${idx}`}
               style={styles.star}
               name={idx < Math.floor(item.avgRating) ? 'star' : 'star-o'}
               size={18}
