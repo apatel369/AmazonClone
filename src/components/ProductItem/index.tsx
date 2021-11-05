@@ -1,56 +1,50 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-const ProductItem = () => {
+interface ProductItemProps {
+  item: {
+    id: string;
+    title: string;
+    description: string;
+    image: string;
+    avgRating: number;
+    ratings: number;
+    price: number;
+    oldPrice?: number;
+  };
+}
+
+const ProductItem = (props: ProductItemProps) => {
+  const {item} = props;
   return (
     <View style={styles.root}>
       <Image
         style={styles.image}
         source={{
-          uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/products/cleanarchitecture.jpg',
+          uri: item.image,
         }}
       />
       <View style={styles.rightContainer}>
         <Text style={styles.title} numberOfLines={3}>
-          Lorem ipsum dolor sit amet dfdfdfdfdf fdfdfd dfdf
+          {item.title}
         </Text>
         <View style={styles.ratingsContainer}>
-          <FontAwesome
-            style={styles.star}
-            name="star"
-            size={18}
-            color={'#e47911'}
-          />
-          <FontAwesome
-            style={styles.star}
-            name="star"
-            size={18}
-            color={'#e47911'}
-          />
-          <FontAwesome
-            style={styles.star}
-            name="star"
-            size={18}
-            color={'#e47911'}
-          />
-          <FontAwesome
-            style={styles.star}
-            name="star-half-full"
-            size={18}
-            color={'#e47911'}
-          />
-          <FontAwesome
-            style={styles.star}
-            name="star-o"
-            size={18}
-            color={'#e47911'}
-          />
-          <Text>1,312</Text>
+          {[0, 0, 0, 0, 0].map((el, idx) => (
+            <FontAwesome
+              style={styles.star}
+              name={idx < Math.floor(item.avgRating) ? 'star' : 'star-o'}
+              size={18}
+              color={'#e47911'}
+            />
+          ))}
+          <Text>{item.ratings}</Text>
         </View>
         <Text style={styles.price}>
-          from $12
-          <Text style={styles.oldPrice}>$15</Text>
+          from {item.price}
+          {item.oldPrice ? (
+            <Text style={styles.oldPrice}>{item.oldPrice}</Text>
+          ) : null}
         </Text>
       </View>
     </View>
@@ -67,7 +61,7 @@ const styles = StyleSheet.create({
     borderColor: '#d1d1d1',
     borderRadius: 10,
     backgroundColor: '#fff',
-    marginVertical:5
+    marginVertical: 5,
   },
   image: {
     flex: 2,
@@ -80,10 +74,10 @@ const styles = StyleSheet.create({
   },
   ratingsContainer: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   star: {
-    margin: 2
+    margin: 2,
   },
   title: {
     fontSize: 18,

@@ -1,13 +1,13 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { StyleSheet, View } from 'react-native';
 import ProductItem from '../../components/ProductItem';
+import products from '../../data/products';
 
 const HomeScreen = () => {
   return (
     <View>
-      <ProductItem/>
+      <ProductItem item={products[1]}/>
     </View>
   );
 };
