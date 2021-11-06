@@ -13,7 +13,7 @@ const ProductScreen = () => {
 
   console.log('selectedOption :>> ', selectedOption);
   return (
-    <View>
+    <View style={styles.root}>
       <Text style={styles.title}>{product.title}</Text>
       <Picker
         selectedValue={selectedOption}
@@ -49,6 +49,20 @@ const ProductScreen = () => {
 export default ProductScreen;
 
 const styles = StyleSheet.create({
-  title: {},
-  description: {},
+  root:{
+    padding:10,
+    backgroundColor:'white'
+  },
+  price:{
+    fontSize:18,
+    fontWeight:'bold'
+  },
+  oldPrice:{
+    fontSize:12,
+    textDecorationLine:'line-through'
+  },
+  description: {
+    marginVertical:10,
+    lineHeight:20
+  },
 });
