@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import ProductItem from '../../components/ProductItem';
 import products from '../../data/products';
 
 const HomeScreen = () => {
   return (
-    <View>
+    <View style={styles.root}>
       <FlatList data={products} renderItem={({item}) => <ProductItem item={item}/>} showsVerticalScrollIndicator={false}/>
     </View>
   );
@@ -15,5 +15,7 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  
+  root:{
+    padding:10
+  }
 });

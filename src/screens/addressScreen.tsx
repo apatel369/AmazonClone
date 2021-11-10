@@ -9,7 +9,7 @@ const countries = countryList.getData();
 const AddressScreen = () => {
     const [country, setCountry] = useState(countries[0].code)
     return (
-        <View>
+        <View style={styles.root}>
             <View style={styles.row}>
                 <Picker selectedValue={country} onValueChange={setCountry}>
                     {countries.map((country)=> <Picker.Item value={country.code} label={country.name}/>)}                 
@@ -38,9 +38,9 @@ const styles = StyleSheet.create({
     root:{
         padding:10
     },
-    raw:{
-
-    },
+    // raw:{
+    //     margin:10
+    // },
     label:{
         fontWeight:'bold'
     },
